@@ -83,6 +83,40 @@ export class MyApp {
     confirm.present();
   }
 
+  signUpPopUp() {
+    console.log('popup');
+    let confirm = this.alertCtrl.create({
+      title: 'Signup',
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'email'
+        },
+        {
+          name: 'password',
+          placeholder: 'password',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Signup',
+          handler: data => {
+            this.signUp(data);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+
   login(credentials) {
     this._tokenService
       .signIn(credentials)
@@ -98,4 +132,15 @@ export class MyApp {
       .subscribe(res => console.log(res), err => console.error('error'));
     this.currentUser = undefined;
   }
+
+  SignUp(credentials) {
+    this._tokenService
+      .signUp(credentials)
+      .subscribe(
+      res => (this.currentUser = res.json().data),
+      err => console.error('error')
+      );
+  }
+
+ 
 }

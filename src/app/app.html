@@ -16,6 +16,9 @@
       <button ion-item (click)="logout()" *ngIf="currentUser">
         Logout {{currentUser.email}}
       </button>
+      <button ion-item (click)="signUpPopUp()" *ngIf="!currentUser">
+        Signup
+      </button>
     </ion-list>
   </ion-content>
 
