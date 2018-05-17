@@ -30,8 +30,8 @@
         </ion-range>
       </ion-item>
     </ion-list>
-    
-    <button block ion-button (click)="calculate()">Calculate</button> 
+
+    <button block ion-button (click)="calculate()">Calculate</button>
 
     <ion-card *ngIf="person?.assessmentMessage">
       <ion-card-header>
@@ -41,5 +41,5 @@
         Gender: {{person?.gender}}, Age: {{person?.age}} <br/> Result: {{person?.assessmentMessage}}
       </ion-card-content>
     </ion-card>
-    
+
 </ion-content>
