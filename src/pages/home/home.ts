@@ -6,9 +6,10 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  user: any = {};
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController) {} 
+  calculate() {
+    console.log(this.user);
   }
-
 }
