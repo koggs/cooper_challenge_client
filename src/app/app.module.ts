@@ -39,4 +39,5 @@ import { CooperProvider } from '../providers/cooper/cooper';
     Angular2TokenService
   ]
 })
+
 export class AppModule {}

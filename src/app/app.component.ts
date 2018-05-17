@@ -25,6 +25,7 @@ export class MyApp {
   ) {
     this._tokenService.init({
       apiBase: 'https://pa-cooper-api.herokuapp.com/api/v1'
+      // apiBase: 'http://localhost:3000/api/v1'
   });
 
     this.initializeApp();
@@ -83,10 +84,10 @@ export class MyApp {
     confirm.present();
   }
 
-  signUpPopUp() {
+  registerAccountPopUp() {
     console.log('popup');
     let confirm = this.alertCtrl.create({
-      title: 'Signup',
+      title: 'Register Account',
       inputs: [
         {
           name: 'email',
@@ -95,6 +96,11 @@ export class MyApp {
         {
           name: 'password',
           placeholder: 'password',
+          type: 'password'
+        },
+        {
+          name: 'password',
+          placeholder: 'Confirm password',
           type: 'password'
         }
       ],
@@ -106,9 +112,52 @@ export class MyApp {
           }
         },
         {
-          text: 'Signup',
+          text: 'Register Account',
           handler: data => {
-            this.signUp(data);
+            this.SignUp(data);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  updatePasswordPopUp() {
+    console.log('popup');
+    let confirm = this.alertCtrl.create({
+      title: 'Update Password',
+      inputs: [
+        {
+          name: 'email',
+          placeholder: 'email'
+        },
+        {
+          name: 'password',
+          placeholder: 'Current password',
+          type: 'password'
+        },
+        {
+          name: 'password',
+          placeholder: 'New password',
+          type: 'password'
+        },
+        {
+          name: 'password',
+          placeholder: 'Confirm new password',
+          type: 'password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Update Password',
+          handler: data => {
+            this.update(data);
           }
         }
       ]
@@ -135,12 +184,19 @@ export class MyApp {
 
   SignUp(credentials) {
     this._tokenService
-      .signUp(credentials)
+      .registerAccount(credentials)
       .subscribe(
       res => (this.currentUser = res.json().data),
       err => console.error('error')
       );
   }
 
- 
+  update(credentials) {
+    this._tokenService
+      .updatePassword(credentials)
+      .subscribe(
+      res => (this.currentUser = res.json().data),
+      err => console.error('error')
+      );
+  }
 }
