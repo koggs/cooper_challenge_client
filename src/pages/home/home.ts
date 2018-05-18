@@ -32,4 +32,10 @@ export class HomePage {
   showResults() {
   this.modalCtrl.create(ResultsPage).present();
   }
+
+  saveResults() {
+    this.performanceData
+      .saveData({ performance_data: { data: { message: this.person.assessmentMessage } } })
+      .subscribe(data => console.log(data));
+  }
 }
