@@ -6,13 +6,14 @@ import { Angular2TokenService } from 'angular2-token';
 
 import { HomePage } from '../pages/home/home';
 import { ResultsPage } from '../pages/results/results';
+import { BmiPage } from '../pages/bmi/bmi';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon:string}>;
   currentUser: any;
 
   rootPage: any = HomePage;
@@ -33,7 +34,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'Home', component: HomePage, icon: 'ios-home' },
+      { title: 'BMI', component: BmiPage, icon: 'ios-calculator' }
     ];
   }
 
@@ -166,7 +168,6 @@ export class MyApp {
     confirm.present();
   }
 
-
   login(credentials) {
     this._tokenService
       .signIn(credentials)
@@ -193,6 +194,7 @@ export class MyApp {
   }
 
   update(credentials) {
+    console.log(credentials)
     this._tokenService
       .updatePassword(credentials)
       .subscribe(
@@ -200,4 +202,5 @@ export class MyApp {
       err => console.error('error')
       );
   }
+
 }
