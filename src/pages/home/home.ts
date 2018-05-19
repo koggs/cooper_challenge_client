@@ -3,6 +3,7 @@ import { NavController, ModalController } from 'ionic-angular';
 import { PersonProvider } from '../../providers/person/person';
 import { PerformanceDataProvider } from '../../providers/performance-data/performance-data';
 import { ResultsPage } from '../results/results';
+import { BmiPage } from '../bmi/bmi';
 
 @Component({
   selector: 'page-home',
@@ -38,4 +39,8 @@ export class HomePage {
       .saveData({ performance_data: { data: { message: this.person.assessmentMessage } } })
       .subscribe(data => console.log(data));
   }
+
+  // bmi() {
+  // this.modalCtrl.create(BmiPage).present();
+  // }
 }
