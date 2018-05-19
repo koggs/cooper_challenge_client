@@ -6,6 +6,7 @@ import { Angular2TokenService } from 'angular2-token';
 
 import { HomePage } from '../pages/home/home';
 import { ResultsPage } from '../pages/results/results';
+import { BmiPage } from '../pages/bmi/bmi';
 
 @Component({
   templateUrl: 'app.html'
@@ -34,7 +35,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      // { title: 'Results', component: ResultsPage }
+      { title: 'BMI', component: BmiPage }
     ];
   }
 
@@ -167,7 +168,6 @@ export class MyApp {
     confirm.present();
   }
 
-
   login(credentials) {
     this._tokenService
       .signIn(credentials)
@@ -201,4 +201,5 @@ export class MyApp {
       err => console.error('error')
       );
   }
+
 }
