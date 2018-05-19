@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PerformanceDataProvider } from '../../providers/performance-data/performance-data';
+import { ViewController } from 'ionic-angular';
 
-/**
- * Generated class for the ResultsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-results',
@@ -25,7 +20,8 @@ export class ResultsPage {
   constructor(
     private performanceData: PerformanceDataProvider,
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public viewCtrl : ViewController
   ) {}
 
 
@@ -40,7 +36,11 @@ export class ResultsPage {
         this.data.push(this.getCount(this.results, label));
       })
     });
-}
+  }
+  
+  public closeModal(){
+    this.viewCtrl.dismiss();
+  }
 
   getLabels(collection: any) {
     let uniqueLabels = [];

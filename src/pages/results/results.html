@@ -6,7 +6,12 @@
 -->
 <ion-header>
   <ion-navbar>
-     <ion-title>Results</ion-title>
+    <ion-title>Results</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">
+        <ion-icon ios="ios-close" md="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -15,10 +20,10 @@
   <div padding>
     <ion-segment [(ngModel)]="view">
       <ion-segment-button value="data">
-        Data
+          <ion-icon name="stats"></ion-icon>
       </ion-segment-button>
       <ion-segment-button value="charts">
-        ChartsHomePage
+          <ion-icon ios="ios-pie" md="md-pie"></ion-icon>
       </ion-segment-button>
     </ion-segment>
   </div>
